@@ -7,7 +7,7 @@ export default function DetailContent({idDrink, strDrinkThumb, strDrink, strCate
             <span>Name : {strDrink}</span>
             <span>Category : {strCategory}</span>
             <span>Info : {strAlcoholic}</span>
-            <span>Glass  {strGlass}</span>
+            <span>Glass :  {strGlass}</span>
             <span>Ingredients : {strIngredient1 } , {strIngredient2} , {strIngredient3}</span>
             <span className="w-2xl ">Instructions : {strInstructions}</span>
             </div>

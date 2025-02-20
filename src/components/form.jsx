@@ -1,15 +1,24 @@
 import axios from "axios";
 import { useState } from "react"
 
-export default function Form({setItems}){
+export default function Form({setItems, isLoading, setIsLoading , setIsError}){
     const [input , setInput]=useState("")
     
      const formHandler = async (e)=>{
+        setIsLoading(true);
+        setItems(null);
         e.preventDefault();
-        
+        try{
         const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`)
+        setIsLoading(false)
         const result = response.data;
         setItems(result.drinks)
+        setIsError(false);
+    }catch (error){
+        setIsLoading(false)
+        setItems([])
+        setIsError(true)
+    }
      }   
     
     return(

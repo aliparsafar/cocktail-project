@@ -5,12 +5,8 @@ export function Newsletter(){
             <form action="" className="flex flex-col">
                 <label htmlFor="">Name :</label>
                 <input type="text" className="p-1 bg-blue-200 w-2xl rounded-xl "/>
-            </form>
-            <form action="" className="flex flex-col">
                 <label htmlFor="">Last Name :</label>
                 <input type="text" className="p-1 bg-blue-200 w-2xl rounded-xl"/>
-            </form>
-            <form action="" className="flex flex-col">
                 <label htmlFor="">Email :</label>
                 <input type="email" className="p-1 bg-blue-200 w-2xl rounded-xl"/>
             </form>

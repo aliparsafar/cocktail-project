@@ -2,36 +2,40 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Item from "../components/item";
 import Form from "../components/form";
+import Notfound from "../components/notfound";
+import Loading from "../components/loading";
+import Anerror from "../components/anerror";
 
-export default function Home({items, setItems}) {
-    const getDataFromApi = async () => {
-        try {
-            const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
-            const response = await axios.get(url);
-            const result = response.data.drinks;
-            setItems(result)
-
-
-        } catch (error) {
-            console.log(error);
-
-        }
-    }
+export default function Home({items, setItems, isLoading, setIsLoading}) {
+    const [isError , setIsError]= useState(false);
+   
     useEffect(() => {
-        getDataFromApi()
+        
     }, [])
     return (
+        <>
         <div className="min-h-screen">
-            <Form setItems={setItems}/>
-          <div className="flex flex-wrap gap-5 px-50 py-20 w-full justify-center items-center">
+            <Form setItems={setItems} isLoading={isLoading} setIsLoading={setIsLoading} setIsError={setIsError} />
             {
-               items.map((item)=>{
-                return <Item key={item.idDrink} {...item} />
-               })
-
+                isError && <Anerror />
             }
-            </div>
+            {
+                !items ? (
+                    isLoading ? (<Loading/>) : (<Notfound/>)
+                ) : (
+                    <div className="flex flex-wrap gap-5 px-50 py-20 w-full justify-center items-center">
+                    {
+                       items.map((item)=>{
+                        return <Item key={item.idDrink} {...item} />
+                       })
+        
+                    }
+                    </div>
+                )
+            }
         </div>
+         
+        </>
     )
 
 }
