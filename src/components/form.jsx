@@ -13,9 +13,9 @@ export default function Form({setItems}){
      }   
     
     return(
-        <form onSubmit={formHandler} className="m-auto flex justify-center gap-4 mt-10">
-            <input type="text" onChange={(e)=>{setInput(e.target.value)}} value={input}  className="bg-blue-300 rounded-xl" />
-            <button className="bg-blue-950 text-amber-50 rounded-xl w-30 h-10">search</button>
+        <form onSubmit={formHandler} className="w-3xl m-auto flex justify-center  mt-10 shadow-xl rounded-2xl p-5">
+            <input type="text" onChange={(e)=>{setInput(e.target.value)}} value={input}  className="bg-blue-300 rounded-2xl w-100  " placeholder="Click Here" />
+            <button className="bg-blue-950 text-amber-50  w-30 h-10 rounded-2xl ">Search</button>
         </form>
     )
 }
